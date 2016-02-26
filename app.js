@@ -39,21 +39,25 @@ essentialsDiv.addEventListener('click', function(e) { // when click occurs
   }
   if (e.target.tagName === "LI") {                    // if event targets an <li>
     event.target.classList.add('selected');           // add 'selected' to targeted tag
+// Change the image to be the most recently clicked food item.
     var newImg = event.target.innerHTML;              // target the inner HTML, which is part of file path
     essentialsDiv.nextElementSibling.firstElementChild.src = "./images/"+newImg+".jpeg"; //access .src of img, and replaces with path of clicked img   
   }
 });
 
-// Change the image to be the most recently clicked food item.
-
-  // If the class of <li> is 'selected'
-
-  // it's image should populate
-
-
 // When the gray div is moused over, it's removed from the DOM.
+var ghosting = document.getElementById('ghosting');
+
+ghosting.addEventListener('mouseover', function() {
+  this.remove(ghosting);
+});
 
 // When the orange div is moused over, its width doubles. 
+var orange = document.getElementById('resize');
+
+orange.addEventListener('mouseover', function() {
+  this.style.width = "400px";
+});
 // When the mouse moves out of the div, it returns to its original size.
 
 // When the reset button is clicked - remove the selected class 
