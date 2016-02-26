@@ -55,16 +55,33 @@ ghosting.addEventListener('mouseover', function() {
 // When the orange div is moused over, its width doubles. 
 var orange = document.getElementById('resize');
 
-orange.addEventListener('mouseover', function() {
+orange.addEventListener('mouseenter', function() {
   this.style.width = "400px";
 });
 // When the mouse moves out of the div, it returns to its original size.
+orange.addEventListener('mouseleave', function() {
+  this.style.width = "200px";
+});
 
 // When the reset button is clicked - remove the selected class 
 // from each <li> and change the image to panic.jpeg.
+var reset = document.getElementById('reset');
+
+reset.addEventListener('click', function() {
+  for (i=0; i<lists.length; i++) {                   
+    lists[i].classList.remove('selected');           
+  }
+  essentialsDiv.nextElementSibling.firstElementChild.src = "./images/panic.jpeg";
+});
 
 // When the 1, 2, 3, 4, 5, 6, 7, 8, 9, or 0 key is pressed, 
 // the page alerts the message "I HATE NUMBERZZZ!"
+window.addEventListener('keypress', function(e) {
+  // copied from http://stackoverflow.com/questions/13196945/keycode-values-for-numeric-keypad
+  if (e.keyCode >= 48 && e.keyCode <= 57) {
+      alert("I HATE NUMBERZZZ!");
+  }
+});
 
 // BONUS: If someone types the Konami Code, the page alerts 
 // "YOU ARE AN EVENT HANDLER GURUUUUUUUUU!"
