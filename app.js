@@ -18,17 +18,38 @@ for (var i = 0; i<lists.length; i++) {
 // Create an image tag, set its src attribute to 
 // http://49.media.tumblr.com/tumblr_m6qt1rjPSz1rxjzkho1_500.gif, 
 // and append the to the #greeting div.
-var image = document.createElement('img');
-image.src = "http://49.media.tumblr.com/tumblr_m6qt1rjPSz1rxjzkho1_500.gif";
-greeting.appendChild(image);
+var imageGreeting = document.createElement('img');
+imageGreeting.src = "http://49.media.tumblr.com/tumblr_m6qt1rjPSz1rxjzkho1_500.gif";
+greeting.appendChild(imageGreeting);
 
 
 // Afterwards:
 
 // Add the class of selected to an <li> when it is clicked. 
 // Remove it from any other lis as well.
+var essentialsDiv = document.getElementById('essentials');
+
+var images = document.getElementsByTagName('img');  // to change food item image below
+
+// Create event listener for the 'essentials' div element 
+// that contains all the <li> tags
+essentialsDiv.addEventListener('click', function(e) { // when click occurs
+  for (i=0; i<lists.length; i++) {                    // loop thru all <li>
+    lists[i].classList.remove('selected');            // remove 'selected' class
+  }
+  if (e.target.tagName === "LI") {                    // if event targets an <li>
+    event.target.classList.add('selected');           // add 'selected' to targeted tag
+    var newImg = event.target.innerHTML;              // target the inner HTML, which is part of file path
+    essentialsDiv.nextElementSibling.firstElementChild.src = "./images/"+newImg+".jpeg"; //access .src of img, and replaces with path of clicked img   
+  }
+});
 
 // Change the image to be the most recently clicked food item.
+
+  // If the class of <li> is 'selected'
+
+  // it's image should populate
+
 
 // When the gray div is moused over, it's removed from the DOM.
 
